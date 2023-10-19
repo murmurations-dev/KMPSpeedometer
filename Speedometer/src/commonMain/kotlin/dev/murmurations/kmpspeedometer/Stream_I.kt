@@ -6,21 +6,26 @@ import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 
 
-interface Stream<T>  {
+interface Stream_I<T>  {
     val flow: Flow<T>
 }
 
-interface SharedStream<T> : Stream<T> {
+interface SharedStream_I<T> : Stream_I<T> {
     override val flow: SharedFlow<T>
 }
 
-interface StateStream<T> : SharedStream<T> {
+interface StateStream<T> : SharedStream_I<T> {
     override val flow: StateFlow<T>
 }
 
-abstract class MutableStateStream<T>(
+interface MutableStateStream_I<T> : StateStream<T> {
+    override val flow: MutableStateFlow<T>
+    fun setState(value: T)
+}
+
+abstract class MutableStateStream_A<T>(
     val initialState: T
-) : StateStream<T> {
+) : MutableStateStream_I<T> {
     override val flow = MutableStateFlow<T>(initialState)
-    fun setState(value: T) { flow.value = value }
+    override fun setState(value: T) { flow.value = value }
 }
