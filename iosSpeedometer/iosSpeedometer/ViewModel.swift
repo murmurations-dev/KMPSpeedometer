@@ -11,16 +11,16 @@ import SwiftUI
 
 @Observable
 class ViewModel {
-    var started: StartedState!
+    var runningState: RunningState
     
-    private var startedStream: StartedStream
+    private var runningStream: RunningStream
     
-    init(initialState: StartedState) {
-        started = initialState
-        startedStream = StartedStream(initialState: initialState)
-        startedStream.plugTo(receiver: self, keyPath: \.started)
+    init(initialState: RunningState) {
+        runningState = initialState
+        runningStream = RunningStream(initialState: initialState)
+        runningStream.assign(receiver: self, keyPath: \.runningState)
     }
     
-    func start() { startedStream.start() }
-    func stop() { startedStream.stop() }
+    func start() { runningStream.start() }
+    func stop() { runningStream.stop() }
 }

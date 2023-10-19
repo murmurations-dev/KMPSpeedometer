@@ -2,10 +2,10 @@ package dev.murmurations.kmpspeedometer
 
 import com.rickclephas.kmp.nativecoroutines.NativeCoroutines
 
-abstract class StartedStream_T(
-    initialState: StartedState
-) : StartedStream_A(initialState) {
+abstract class RunningStream_T(
+    initialState: RunningState
+) : RunningStream_A(initialState) {
     @OptIn(kotlin.experimental.ExperimentalObjCName::class)
     @NativeCoroutines
-    val startedFlow = super.flow
+    val runningFlow = super.flow
 }

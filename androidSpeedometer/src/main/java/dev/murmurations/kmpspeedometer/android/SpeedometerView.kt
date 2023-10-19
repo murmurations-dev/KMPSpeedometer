@@ -13,8 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
-import dev.murmurations.kmpspeedometer.StartedState
+import dev.murmurations.kmpspeedometer.RunningState
 
 @Composable
 fun SpeedometerView(model: SpeedometerViewModel) {
@@ -30,14 +29,14 @@ fun SpeedometerView(model: SpeedometerViewModel) {
         )
         Spacer(modifier = Modifier.height(16.dp))
         Button(
-            enabled = (started is StartedState.Stopped),
+            enabled = (started is RunningState.Stopped),
             onClick = {
                 model.start()
             }) {
             Text(text = "Start")
         }
         Button(
-            enabled = (started is StartedState.Started),
+            enabled = (started is RunningState.Started),
             onClick = {
                 model.stop()
             }) {

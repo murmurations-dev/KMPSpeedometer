@@ -11,7 +11,7 @@ import Foundation
 import Speedometer
 
 
-enum StartedState {
+enum RunningState {
     case stopped
     case started
 }
@@ -20,20 +20,20 @@ enum StartedState {
 //    var swiftType: StartedState { get }
 //}
 
-extension StartedState {
+extension RunningState {
     
-    @Sendable init?(abstracted: Speedometer.StartedState) {
+    @Sendable init?(abstracted: Speedometer.RunningState) {
         switch (abstracted) {
-        case is StartedStateStopped: self = .stopped
-        case is StartedStateStarted: self = .started
+        case is RunningStateStopped: self = .stopped
+        case is RunningStateStarted: self = .started
         default: return nil
         }
     }
 
-    var abstractedType: Speedometer.StartedState {
+    var abstractedType: Speedometer.RunningState {
         switch self {
-        case .stopped: StartedStateStopped()
-        case .started: StartedStateStarted()
+        case .stopped: RunningStateStopped()
+        case .started: RunningStateStarted()
         }
     }
     

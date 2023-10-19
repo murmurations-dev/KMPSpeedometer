@@ -10,12 +10,12 @@ struct ContentView: View {
             Button("Start") {
                 model.start()
             }
-            .disabled(model.started == .started)
+            .disabled(model.runningState == .started)
             
             Button("Stop") {
                 model.stop()
             }
-            .disabled(model.started == .stopped)
+            .disabled(model.runningState == .stopped)
         }
     }
 }
