@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.kmp.nativecoroutines)
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -29,6 +31,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 //put your multiplatform dependencies here
+                implementation(libs.kotlinx.coroutines.core)
             }
         }
         val commonTest by getting {

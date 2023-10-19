@@ -5,6 +5,9 @@ compose = "1.5.3"
 compose-compiler = "1.5.3"
 compose-material3 = "1.1.2"
 androidx-activityCompose = "1.8.0"
+kotlinxCoroutinesCore = "1.7.3"
+ksp = "1.9.0-1.0.13" # https://github.com/google/ksp/releases
+kmp-nativecoroutines = "1.0.0-ALPHA-18" # https://github.com/rickclephas/KMP-NativeCoroutines/releases
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -14,10 +17,13 @@ compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = 
 compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
 compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "compose-material3" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-kotlinCocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin" }
+# kotlinCocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin" }
+ksp = { id = 'com.google.devtools.ksp', version.ref = 'ksp' }
+kmp-nativecoroutines = { id = 'com.rickclephas.kmp.nativecoroutines', version.ref = 'kmp-nativecoroutines' }
