@@ -3,7 +3,7 @@
 //  iosSpeedometer
 //
 //  Created by Etienne Vautherin on 17/10/2023.
-//  Copyright © 2023 orgName. All rights reserved.
+//  Copyright © 2023 Murmurations Dev. All rights reserved.
 //
 
 import Foundation

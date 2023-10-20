@@ -3,7 +3,7 @@
 //  iosSpeedometer
 //
 //  Created by Etienne Vautherin on 17/10/2023.
-//  Copyright © 2023 orgName. All rights reserved.
+//  Copyright © 2023 Murmurations Dev. All rights reserved.
 //
 
 import Foundation
@@ -17,9 +17,9 @@ class RunningStream : RunningStream_T {
         super.init(initialState: initialState.abstractedType)
     }
     
-    func assign<Root>(
-        receiver: Root,
-        keyPath: ReferenceWritableKeyPath<Root, RunningState>
+    func assignStream<Root>(
+        to receiver: Root,
+        on keyPath: ReferenceWritableKeyPath<Root, RunningState>
     ) {
         Task { @MainActor in
             for try await runningState in runningSequence {

@@ -29,14 +29,14 @@ fun SpeedometerView(model: SpeedometerViewModel) {
         )
         Spacer(modifier = Modifier.height(16.dp))
         Button(
-            enabled = (started is RunningState.Stopped),
+            enabled = (started !is RunningState.Started),
             onClick = {
                 model.start()
             }) {
             Text(text = "Start")
         }
         Button(
-            enabled = (started is RunningState.Started),
+            enabled = (started !is RunningState.Stopped),
             onClick = {
                 model.stop()
             }) {

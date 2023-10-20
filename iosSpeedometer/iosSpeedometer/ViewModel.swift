@@ -3,7 +3,7 @@
 //  iosSpeedometer
 //
 //  Created by Etienne Vautherin on 18/10/2023.
-//  Copyright © 2023 orgName. All rights reserved.
+//  Copyright © 2023 Murmurations Dev. All rights reserved.
 //
 
 import Foundation
@@ -16,6 +16,6 @@ class ViewModel :  RunningStream {
     override init(initialState: RunningState) {
         runningState = initialState
         super.init(initialState: initialState)
-        assign(receiver: self, keyPath: \.runningState)
+        assignStream(to: self, on: \.runningState)
     }
 }

@@ -7,6 +7,8 @@ struct ContentView: View {
         VStack {
             Text("model.speed")
             
+            Spacer().frame(height: 16)
+            
             Button("Start") {
                 model.start()
             }
