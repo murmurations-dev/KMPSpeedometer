@@ -17,26 +17,29 @@ import dev.murmurations.kmpspeedometer.RunningState
 
 @Composable
 fun SpeedometerView(model: SpeedometerViewModel) {
-    val started by model.flow.collectAsState()
+    val runningState by model.flow.collectAsState()
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.padding(16.dp)
     ) {
-        Text(
-            text = "speed",
-            fontSize = 18.sp,
-        )
+        val text = when (runningState) {
+            is RunningState.Stopped -> "Stopped"
+            is RunningState.Started -> "Started"
+        }
+        Text(text)
+
         Spacer(modifier = Modifier.height(16.dp))
+        
         Button(
-            enabled = (started !is RunningState.Started),
+            enabled = (runningState !is RunningState.Started),
             onClick = {
                 model.start()
             }) {
             Text(text = "Start")
         }
         Button(
-            enabled = (started !is RunningState.Stopped),
+            enabled = (runningState !is RunningState.Stopped),
             onClick = {
                 model.stop()
             }) {

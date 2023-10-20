@@ -5,7 +5,11 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Text("model.speed")
+            let text = switch (model.runningState) {
+            case .stopped: "Stopped"
+            case .started: "Started"
+            }
+            Text(text)
             
             Spacer().frame(height: 16)
             
