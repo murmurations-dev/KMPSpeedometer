@@ -1,7 +1,9 @@
 package dev.murmurations.kmpspeedometer.android
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
@@ -20,8 +22,9 @@ fun SpeedometerView(model: SpeedometerViewModel) {
     val runningState by model.flow.collectAsState()
 
     Column(
+        modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.padding(16.dp)
+        verticalArrangement = Arrangement.Center
     ) {
         val text = when (runningState) {
             is RunningState.Stopped -> "Stopped"
@@ -30,20 +33,51 @@ fun SpeedometerView(model: SpeedometerViewModel) {
         Text(text)
 
         Spacer(modifier = Modifier.height(16.dp))
-        
+
         Button(
-            enabled = (runningState !is RunningState.Started),
             onClick = {
                 model.start()
-            }) {
-            Text(text = "Start")
+            },
+            enabled = runningState !is RunningState.Started
+        ) {
+            Text("Start")
         }
+
         Button(
-            enabled = (runningState !is RunningState.Stopped),
             onClick = {
                 model.stop()
-            }) {
-            Text(text = "Stop")
+            },
+            enabled = runningState !is RunningState.Stopped
+        ) {
+            Text("Stop")
         }
     }
 }
+//    Column(
+//        horizontalAlignment = Alignment.CenterHorizontally,
+//        modifier = Modifier.padding(16.dp)
+//    ) {
+//        val text = when (runningState) {
+//            is RunningState.Stopped -> "Stopped"
+//            is RunningState.Started -> "Started"
+//        }
+//        Text(text)
+//
+//        Spacer(modifier = Modifier.height(16.dp))
+//
+//        Button(
+//            enabled = (runningState !is RunningState.Started),
+//            onClick = {
+//                model.start()
+//            }) {
+//            Text(text = "Start")
+//        }
+//        Button(
+//            enabled = (runningState !is RunningState.Stopped),
+//            onClick = {
+//                model.stop()
+//            }) {
+//            Text(text = "Stop")
+//        }
+//    }
+//}

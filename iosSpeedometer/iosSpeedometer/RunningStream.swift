@@ -14,7 +14,7 @@ import Speedometer
 class RunningStream : RunningStream_T {
     
     init(initialState: RunningState) {
-        super.init(initialState: initialState.abstractedType)
+        super.init(initialState: initialState.kotlinObject)
     }
     
     func assignStream<Root>(

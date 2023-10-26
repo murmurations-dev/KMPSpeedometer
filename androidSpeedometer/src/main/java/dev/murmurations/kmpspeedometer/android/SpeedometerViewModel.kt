@@ -6,5 +6,5 @@ import dev.murmurations.kmpspeedometer.RunningStream
 import dev.murmurations.kmpspeedometer.RunningStream_I
 
 class SpeedometerViewModel(
-    runningStream: RunningStream = RunningStream(RunningState.Stopped())
+    runningStream: RunningStream = RunningStream(RunningState.Stopped)
 ) : ViewModel(), RunningStream_I by runningStream

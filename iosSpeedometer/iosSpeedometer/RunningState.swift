@@ -22,15 +22,15 @@ enum RunningState {
 
 extension RunningState {
     
-    @Sendable init?(abstracted: Speedometer.RunningState) {
-        switch (abstracted) {
+    @Sendable init?(kotlinObject: Speedometer.RunningState) {
+        switch (kotlinObject) {
         case is RunningStateStopped: self = .stopped
         case is RunningStateStarted: self = .started
         default: return nil
         }
     }
 
-    var abstractedType: Speedometer.RunningState {
+    var kotlinObject: Speedometer.RunningState {
         switch self {
         case .stopped: RunningStateStopped()
         case .started: RunningStateStarted()
