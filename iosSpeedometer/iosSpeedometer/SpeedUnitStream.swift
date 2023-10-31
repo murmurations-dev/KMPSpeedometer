@@ -9,7 +9,7 @@
 import Foundation
 import Speedometer
 
-class SpeedUnitStream : SpeedUnitStream_T {
+class SpeedUnitStream : Speedometer.SpeedUnitStream {
     func setUnit(unit: SpeedUnit) {
         super.setUnit(unit: unit.kotlinObject)
     }

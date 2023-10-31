@@ -11,7 +11,7 @@ import KMPNativeCoroutinesAsync
 import Speedometer
 
 
-class RunningStream : RunningStream_T {
+class RunningStream : Speedometer.RunningStream {
     
     init(initialState: RunningState) {
         super.init(initialState: initialState.kotlinObject)

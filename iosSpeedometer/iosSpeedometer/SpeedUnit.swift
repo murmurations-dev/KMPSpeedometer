@@ -18,20 +18,20 @@ enum SpeedUnit {
 }
 
 extension SpeedUnit {
-    @Sendable init?(kotlinObject: any SpeedUnit_T) {
+    @Sendable init?(kotlinObject: any Speedometer.SpeedUnit) {
         switch (kotlinObject) {
-        case is SpeedUnit_TMetricSystem: self = .metricSystem
-        case is SpeedUnit_TKmh: self = .kmh
-        case is SpeedUnit_TMph: self = .mph
+        case is SpeedUnitMetricSystem: self = .metricSystem
+        case is SpeedUnitKmh: self = .kmh
+        case is SpeedUnitMph: self = .mph
         default: return nil
         }
     }
 
-    var kotlinObject: some SpeedUnit_T {
+    var kotlinObject: some Speedometer.SpeedUnit {
         switch self {
-        case .metricSystem: SpeedUnit_TMetricSystem() as! SpeedUnit_T
-        case .kmh: SpeedUnit_TKmh() as! SpeedUnit_T
-        case .mph: SpeedUnit_TMph() as! SpeedUnit_T
+        case .metricSystem: SpeedUnitMetricSystem() as! Speedometer.SpeedUnit
+        case .kmh: SpeedUnitKmh() as! Speedometer.SpeedUnit
+        case .mph: SpeedUnitMph() as! Speedometer.SpeedUnit
         }
     }
     
