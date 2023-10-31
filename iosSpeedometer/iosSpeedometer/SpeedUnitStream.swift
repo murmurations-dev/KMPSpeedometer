@@ -6,11 +6,8 @@
 //  Copyright © 2023 Murmurations Dev. All rights reserved.
 //
 
-import Foundation
 import Speedometer
 
 class SpeedUnitStream : Speedometer.SpeedUnitStream {
-    func setUnit(unit: SpeedUnit) {
-        super.setUnit(unit: unit.kotlinObject)
-    }
+    func setUnit(unit: SpeedUnit) { super.setUnit(unit: unit.kotlinObject) }
 }

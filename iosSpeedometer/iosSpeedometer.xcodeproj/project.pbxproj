@@ -94,13 +94,13 @@
 			children = (
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
 				7555FF82242A565900829871 /* SpeedometerView.swift */,
+				8F79120E2AE11D32001D3D4C /* ViewModel.swift */,
 				7555FF8C242A565B00829871 /* Info.plist */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 				8F79120A2AE11D06001D3D4C /* RunningState.swift */,
 				8F79120F2AE11D32001D3D4C /* RunningStream.swift */,
 				8F79120C2AE11D1E001D3D4C /* SpeedUnit.swift */,
 				8F598B3D2AF11C8900065F11 /* SpeedUnitStream.swift */,
-				8F79120E2AE11D32001D3D4C /* ViewModel.swift */,
 				058557D7273AAEEB004C7B11 /* Preview Content */,
 			);
 			path = iosSpeedometer;

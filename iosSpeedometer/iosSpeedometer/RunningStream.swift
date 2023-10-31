@@ -6,7 +6,6 @@
 //  Copyright © 2023 Murmurations Dev. All rights reserved.
 //
 
-import Foundation
 import KMPNativeCoroutinesAsync
 import Speedometer
 
@@ -17,7 +16,7 @@ class RunningStream : Speedometer.RunningStream {
         super.init(initialState: initialState.kotlinObject)
     }
     
-    func assignStream<Root>(
+    func assign<Root>(
         to receiver: Root,
         on keyPath: ReferenceWritableKeyPath<Root, RunningState>
     ) {

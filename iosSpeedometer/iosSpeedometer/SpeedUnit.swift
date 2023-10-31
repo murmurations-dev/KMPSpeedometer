@@ -6,8 +6,6 @@
 //  Copyright © 2023 Murmurations Dev. All rights reserved.
 //
 
-import Foundation
-
 import Speedometer
 
 
@@ -18,7 +16,7 @@ enum SpeedUnit {
 }
 
 extension SpeedUnit {
-    @Sendable init?(kotlinObject: any Speedometer.SpeedUnit) {
+    @Sendable init?(kotlinObject: Speedometer.SpeedUnit) {
         switch (kotlinObject) {
         case is SpeedUnitMetricSystem: self = .metricSystem
         case is SpeedUnitKmh: self = .kmh
@@ -27,13 +25,17 @@ extension SpeedUnit {
         }
     }
 
-    var kotlinObject: some Speedometer.SpeedUnit {
+    var kotlinObject: Speedometer.SpeedUnit {
         switch self {
-        case .metricSystem: SpeedUnitMetricSystem() as! Speedometer.SpeedUnit
-        case .kmh: SpeedUnitKmh() as! Speedometer.SpeedUnit
-        case .mph: SpeedUnitMph() as! Speedometer.SpeedUnit
+        case .metricSystem: SpeedUnitMetricSystem()
+        case .kmh: SpeedUnitKmh()
+        case .mph: SpeedUnitMph()
         }
     }
     
     var userDisplay: String { kotlinObject.userDisplay }
 }
+
+extension SpeedUnitMetricSystem : Speedometer.SpeedUnit {}
+extension SpeedUnitKmh : Speedometer.SpeedUnit {}
+extension SpeedUnitMph : Speedometer.SpeedUnit {}

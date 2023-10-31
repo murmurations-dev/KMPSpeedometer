@@ -17,7 +17,7 @@ class ViewModel {
     init(initialState: RunningState) {
         runningStream = RunningStream(initialState: initialState)
         runningState = initialState
-        runningStream.assignStream(to: self, on: \.runningState)
+        runningStream.assign(to: self, on: \.runningState)
     }
 }
 
