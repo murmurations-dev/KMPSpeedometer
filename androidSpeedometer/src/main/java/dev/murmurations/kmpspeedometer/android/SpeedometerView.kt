@@ -18,7 +18,9 @@ import androidx.compose.ui.unit.sp
 import dev.murmurations.kmpspeedometer.RunningState
 
 @Composable
-fun SpeedometerView(model: SpeedometerViewModel) {
+fun SpeedometerView(
+    model: SpeedometerViewModel = SpeedometerViewModel()
+) {
     val runningState by model.flow.collectAsState()
 
     Column(

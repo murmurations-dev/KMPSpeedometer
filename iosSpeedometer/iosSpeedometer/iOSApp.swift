@@ -1,4 +1,7 @@
+import os
 import SwiftUI
+
+let logger = Logger()
 
 @main
 struct iOSApp: App {

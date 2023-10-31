@@ -9,9 +9,10 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import dev.murmurations.kmpspeedometer.Greeting
 
 class MainActivity : ComponentActivity() {
+    //*** val runningStream = applicationContext.runningStream
+
     private val viewModel: SpeedometerViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,15 +29,10 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
-fun GreetingView(text: String) {
-    Text(text = text)
-}
-
 @Preview
 @Composable
 fun DefaultPreview() {
     SpeedometerTheme {
-        GreetingView("Hello, Android!")
+        SpeedometerView()
     }
 }
