@@ -36,14 +36,6 @@ extension RunningState {
         case .started: RunningStateStarted()
         }
     }
-    
-//    class Stopped : StartedState_IStopped_A, StartedStateSwiftType {
-//        var swiftType: StartedState { .stopped }
-//    }
-//    
-//    class Started : StartedState_IStarted_A, StartedStateSwiftType {
-//        var swiftType: StartedState { .started }
-//    }
 }
 
 

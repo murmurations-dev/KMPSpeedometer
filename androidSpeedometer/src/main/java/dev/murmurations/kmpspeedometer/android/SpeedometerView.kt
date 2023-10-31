@@ -35,49 +35,17 @@ fun SpeedometerView(model: SpeedometerViewModel) {
         Spacer(modifier = Modifier.height(16.dp))
 
         Button(
-            onClick = {
-                model.start()
-            },
+            onClick = model::start,
             enabled = runningState !is RunningState.Started
         ) {
             Text("Start")
         }
 
         Button(
-            onClick = {
-                model.stop()
-            },
+            onClick = model::stop,
             enabled = runningState !is RunningState.Stopped
         ) {
             Text("Stop")
         }
     }
 }
-//    Column(
-//        horizontalAlignment = Alignment.CenterHorizontally,
-//        modifier = Modifier.padding(16.dp)
-//    ) {
-//        val text = when (runningState) {
-//            is RunningState.Stopped -> "Stopped"
-//            is RunningState.Started -> "Started"
-//        }
-//        Text(text)
-//
-//        Spacer(modifier = Modifier.height(16.dp))
-//
-//        Button(
-//            enabled = (runningState !is RunningState.Started),
-//            onClick = {
-//                model.start()
-//            }) {
-//            Text(text = "Start")
-//        }
-//        Button(
-//            enabled = (runningState !is RunningState.Stopped),
-//            onClick = {
-//                model.stop()
-//            }) {
-//            Text(text = "Stop")
-//        }
-//    }
-//}

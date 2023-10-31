@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ContentView: View {
+struct SpeedometerView: View {
     var model = ViewModel(initialState: .stopped)
     
     var body: some View {
@@ -13,21 +13,17 @@ struct ContentView: View {
             
             Spacer().frame(height: 16)
             
-            Button("Start") {
-                model.start()
-            }
+            Button("Start", action: model.start)
             .disabled(model.runningState == .started)
             
-            Button("Stop") {
-                model.stop()
-            }
+            Button("Stop", action: model.stop)
             .disabled(model.runningState == .stopped)
         }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct SpeedometerView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        SpeedometerView()
     }
 }

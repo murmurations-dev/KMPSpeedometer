@@ -18,7 +18,6 @@ enum SpeedUnit {
 }
 
 extension SpeedUnit {
-    
     @Sendable init?(kotlinObject: any SpeedUnit_T) {
         switch (kotlinObject) {
         case is SpeedUnit_TMetricSystem: self = .metricSystem
