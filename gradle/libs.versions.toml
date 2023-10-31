@@ -1,12 +1,12 @@
 [versions]
-agp = "8.1.2"
-kotlin = "1.9.10"
-compose = "1.5.3"
-compose-compiler = "1.5.3"
+agp = "8.1.2" # https://developer.android.com/reference/tools/gradle-api
+kotlin = "1.9.10"  # https://kotlinlang.org/docs/releases.html#release-details
+compose = "1.5.4"
+compose-compiler = "1.5.3"  # https://androidx.dev/storage/compose-compiler/repository
 compose-material3 = "1.1.2"
-androidx-activityCompose = "1.8.0"
+androidx-activityCompose = "1.8.0" # https://androidx.tech/artifacts/activity/activity-compose/
 androidx-lifecycle = "2.6.2" # https://androidx.tech/artifacts/lifecycle/lifecycle-viewmodel/
-kotlinxCoroutinesCore = "1.7.3"
+kotlinxCoroutinesCore = "1.7.3"  # https://github.com/Kotlin/kotlinx.coroutines/releases
 ksp = "1.9.0-1.0.13" # https://github.com/google/ksp/releases
 kmp-nativecoroutines = "1.0.0-ALPHA-18" # https://github.com/rickclephas/KMP-NativeCoroutines/releases
 

@@ -11,6 +11,7 @@
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
+		8F598B3E2AF11C8900065F11 /* SpeedUnitStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F598B3D2AF11C8900065F11 /* SpeedUnitStream.swift */; };
 		8F7912032AE11C51001D3D4C /* KMPNativeCoroutinesAsync in Frameworks */ = {isa = PBXBuildFile; productRef = 8F7912022AE11C51001D3D4C /* KMPNativeCoroutinesAsync */; };
 		8F7912052AE11C51001D3D4C /* KMPNativeCoroutinesCombine in Frameworks */ = {isa = PBXBuildFile; productRef = 8F7912042AE11C51001D3D4C /* KMPNativeCoroutinesCombine */; };
 		8F7912072AE11C51001D3D4C /* KMPNativeCoroutinesCore in Frameworks */ = {isa = PBXBuildFile; productRef = 8F7912062AE11C51001D3D4C /* KMPNativeCoroutinesCore */; };
@@ -41,6 +42,7 @@
 		7555FF7B242A565900829871 /* iosSpeedometer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosSpeedometer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8F598B3D2AF11C8900065F11 /* SpeedUnitStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedUnitStream.swift; sourceTree = "<group>"; };
 		8F79120A2AE11D06001D3D4C /* RunningState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunningState.swift; sourceTree = "<group>"; };
 		8F79120C2AE11D1E001D3D4C /* SpeedUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedUnit.swift; sourceTree = "<group>"; };
 		8F79120E2AE11D32001D3D4C /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
@@ -95,8 +97,9 @@
 				7555FF8C242A565B00829871 /* Info.plist */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 				8F79120A2AE11D06001D3D4C /* RunningState.swift */,
-				8F79120C2AE11D1E001D3D4C /* SpeedUnit.swift */,
 				8F79120F2AE11D32001D3D4C /* RunningStream.swift */,
+				8F79120C2AE11D1E001D3D4C /* SpeedUnit.swift */,
+				8F598B3D2AF11C8900065F11 /* SpeedUnitStream.swift */,
 				8F79120E2AE11D32001D3D4C /* ViewModel.swift */,
 				058557D7273AAEEB004C7B11 /* Preview Content */,
 			);
@@ -214,6 +217,7 @@
 				8F7912102AE11D32001D3D4C /* ViewModel.swift in Sources */,
 				8F79120B2AE11D06001D3D4C /* RunningState.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
+				8F598B3E2AF11C8900065F11 /* SpeedUnitStream.swift in Sources */,
 				8F7912112AE11D32001D3D4C /* RunningStream.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 				8F79120D2AE11D1E001D3D4C /* SpeedUnit.swift in Sources */,

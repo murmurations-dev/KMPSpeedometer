@@ -2,7 +2,7 @@ package dev.murmurations.kmpspeedometer
 
 
 //@Suppress("OVERRIDE_BY_INLINE")
-sealed interface SpeedUnit_T : ValueTransformer<Double> {
+sealed interface SpeedUnit_T : SpeedUnit_I<Double> {
     class MetricSystem : SpeedUnit_I.MetricSystem_A<Double>() {
         override fun transform(value: Double): Double { return value }
         // For typed Swift implementation:

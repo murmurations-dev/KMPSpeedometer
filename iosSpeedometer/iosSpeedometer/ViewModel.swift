@@ -10,12 +10,18 @@ import Foundation
 import SwiftUI
 
 @Observable
-class ViewModel :  RunningStream {
+class ViewModel {
+    private let runningStream: RunningStream
     var runningState: RunningState
         
-    override init(initialState: RunningState) {
+    init(initialState: RunningState) {
+        runningStream = RunningStream(initialState: initialState)
         runningState = initialState
-        super.init(initialState: initialState)
-        assignStream(to: self, on: \.runningState)
+        runningStream.assignStream(to: self, on: \.runningState)
     }
+}
+
+extension ViewModel {
+    func start() { runningStream.start() }
+    func stop() { runningStream.stop() }
 }

@@ -19,8 +19,8 @@ enum SpeedUnit {
 
 extension SpeedUnit {
     
-    @Sendable init?(abstracted: SpeedUnit_I) {
-        switch (abstracted) {
+    @Sendable init?(kotlinObject: any SpeedUnit_T) {
+        switch (kotlinObject) {
         case is SpeedUnit_TMetricSystem: self = .metricSystem
         case is SpeedUnit_TKmh: self = .kmh
         case is SpeedUnit_TMph: self = .mph
@@ -28,13 +28,13 @@ extension SpeedUnit {
         }
     }
 
-    var abstractedType: SpeedUnit_I {
+    var kotlinObject: some SpeedUnit_T {
         switch self {
-        case .metricSystem: SpeedUnit_TMetricSystem()
-        case .kmh: SpeedUnit_TKmh()
-        case .mph: SpeedUnit_TMph()
+        case .metricSystem: SpeedUnit_TMetricSystem() as! SpeedUnit_T
+        case .kmh: SpeedUnit_TKmh() as! SpeedUnit_T
+        case .mph: SpeedUnit_TMph() as! SpeedUnit_T
         }
     }
     
-    var userDisplay: String { abstractedType.userDisplay }
+    var userDisplay: String { kotlinObject.userDisplay }
 }
