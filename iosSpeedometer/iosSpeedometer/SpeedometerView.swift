@@ -5,19 +5,20 @@ struct SpeedometerView: View {
     
     var body: some View {
         VStack {
-            let text = switch (model.runningState) {
-            case .stopped: "Stopped"
-            case .started: "Started"
-            }
-            Text(text)
+//            let text = switch (model.updateLocation) {
+//            case .stopped: "Stopped"
+//            case .started: "Started"
+//            }
+//            Text(text)
+            Text(model.updateLocation.description)
             
-            Spacer().frame(height: 16)
-            
-            Button("Start", action: model.start)
-            .disabled(model.runningState == .started)
-            
-            Button("Stop", action: model.stop)
-            .disabled(model.runningState == .stopped)
+//            Spacer().frame(height: 16)
+//            
+//            Button("Start", action: model.start)
+//            .disabled(model.updateLocation == .started)
+//            
+//            Button("Stop", action: model.stop)
+//            .disabled(model.updateLocation == .stopped)
         }
     }
 }

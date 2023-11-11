@@ -9,7 +9,11 @@
 import CoreLocation
 import Speedometer
 
-class LocationUpdateStream : Speedometer.LocationUpdateStream {
+//*** Progress
+import KMPNativeCoroutinesAsync
+
+
+class LocationUpdateStream : LocationUpdateStream_T {
     static let shared = LocationUpdateStream()
     
     override func startLocationUpdates(updateLocation: @escaping (CLLocation) -> Void) -> () -> Void {
@@ -36,4 +40,20 @@ class LocationUpdateStream : Speedometer.LocationUpdateStream {
             locationUpdateTask.cancel()
         }
     }
+    
+    //*** Progress
+    func assign<Root>(
+        to receiver: Root,
+        on keyPath: ReferenceWritableKeyPath<Root, CLLocation>
+    ) {
+        Task { @MainActor in
+            for try await locationUpdate in asyncSequence(for: locationUpdateFlow) {
+                receiver[keyPath: keyPath] =  locationUpdate
+            }
+        }
+    }
+    
+//    var locationUpdateSequence: AsyncCompactMapSequence<some AsyncSequence, RunningState> {
+//        asyncSequence(for: locationUpdateFlow).compactMap(RunningState.init)
+//    }
 }

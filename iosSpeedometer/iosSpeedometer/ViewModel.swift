@@ -9,19 +9,34 @@
 import Foundation
 import SwiftUI
 
+//*** Progress
+import CoreLocation
+
 @Observable
 class ViewModel {
-    private let runningStream: RunningStream
-    var runningState: RunningState
+    private let updateLocationStream: LocationUpdateStream
+    var updateLocation: CLLocation
         
     init(initialState: RunningState) {
-        runningStream = RunningStream(initialState: initialState)
-        runningState = initialState
-        runningStream.assign(to: self, on: \.runningState)
+        updateLocationStream = LocationUpdateStream.shared
+        updateLocation = CLLocation()
+        updateLocationStream.assign(to: self, on: \.updateLocation)
     }
 }
 
-extension ViewModel {
-    func start() { runningStream.start() }
-    func stop() { runningStream.stop() }
-}
+//@Observable
+//class ViewModel {
+//    private let runningStream: RunningStream
+//    var runningState: RunningState
+//        
+//    init(initialState: RunningState) {
+//        runningStream = RunningStream(initialState: initialState)
+//        runningState = initialState
+//        runningStream.assign(to: self, on: \.runningState)
+//    }
+//}
+//
+//extension ViewModel {
+//    func start() { runningStream.start() }
+//    func stop() { runningStream.stop() }
+//}
