@@ -1,7 +1,8 @@
 [versions]
-agp = "8.1.3" # https://developer.android.com/reference/tools/gradle-api
+agp = "8.1.4" # https://developer.android.com/reference/tools/gradle-api
 kotlin = "1.9.10"  # https://kotlinlang.org/docs/releases.html#release-details
 compose = "1.5.4"
+# compose-bom = "2023.10.01" # https://androidx.tech/artifacts/compose/compose-bom/
 compose-compiler = "1.5.3"  # https://androidx.dev/storage/compose-compiler/repository
 compose-material3 = "1.1.2"
 androidx-activityCompose = "1.8.0" # https://androidx.tech/artifacts/activity/activity-compose/

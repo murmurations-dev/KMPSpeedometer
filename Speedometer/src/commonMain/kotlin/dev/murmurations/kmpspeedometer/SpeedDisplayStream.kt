@@ -20,21 +20,18 @@ abstract class SpeedDisplayStream_A<L,R,T:SpeedUnit_I<R>>(
     val unitDisplayFlow: Flow<String>
         get() = speedUnitStream.flow.map { it.userDisplay }
 
-    private val valueDisplayFlow: Flow<String>
-        get() = combine(
-            speedEvaluationStream.flow,
-            speedUnitStream.flow
-        ) { speed, unit ->
-            format(unit.transform(speed))
-        }
-
     @OptIn(ExperimentalCoroutinesApi::class, kotlin.experimental.ExperimentalObjCName::class)
     @NativeCoroutines
     val speedDisplayflow: Flow<String>
         get() = runningStream.flow.flatMapLatest { runningState ->
             when (runningState) {
                 is RunningState.Stopped -> flowOf("--")
-                is RunningState.Started -> valueDisplayFlow
+                is RunningState.Started -> combine(
+                    speedEvaluationStream.flow,
+                    speedUnitStream.flow
+                ) { speed, unit ->
+                    format(unit.transform(speed))
+                }
             }
         }
 }

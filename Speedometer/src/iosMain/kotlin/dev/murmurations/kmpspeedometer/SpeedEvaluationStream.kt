@@ -20,8 +20,10 @@ class SpeedEvaluationStream(
 
     override fun divide(differences: LocationDifference<Double>): Double? {
         val (dx, dt) = differences
-        if (dt <= 0.0) return null
-        return dx/dt
+        return when {
+            (dt > 0.0) -> dx/dt
+            else -> null
+        }
     }
 
     //*** Progress
