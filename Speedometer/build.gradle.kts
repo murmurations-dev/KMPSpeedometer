@@ -31,12 +31,19 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 //put your multiplatform dependencies here
+                implementation(libs.kermit)
                 implementation(libs.kotlinx.coroutines.core)
             }
         }
         val commonTest by getting {
             dependencies {
                 implementation(libs.kotlin.test)
+            }
+        }
+        val iosMain by getting {
+            dependencies {
+                // Only if you want to talk to Kermit from Swift
+                api(libs.kermit.simple)
             }
         }
     }

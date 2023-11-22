@@ -18,7 +18,8 @@ class LocationUpdateStream : LocationUpdateStream_T {
     
     override func startLocationUpdates(updateLocation: @escaping (CLLocation) -> Void) -> () -> Void {
         logger.info("Start Location Updates")
-        
+        LoggerKt.i(string: "Hello from Swift")
+
         let manager = CLLocationManager()
 
         if manager.authorizationStatus == .notDetermined {

@@ -47,6 +47,6 @@ dependencies {
     implementation(libs.androidx.lifecycle.service)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.play.services.location)
-    implementation(libs.kermit)
+//    implementation(libs.kermit)
     debugImplementation(libs.compose.ui.tooling)
 }
