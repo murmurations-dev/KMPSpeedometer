@@ -80,6 +80,7 @@
 				7555FF7D242A565900829871 /* iosSpeedometer */,
 				7555FF7C242A565900829871 /* Products */,
 				7555FFB0242A642200829871 /* Frameworks */,
+				AABEC5CE2A86EEBA9DB03241 /* xcschemes */,
 			);
 			sourceTree = "<group>";
 		};
@@ -114,6 +115,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AABEC5CE2A86EEBA9DB03241 /* xcschemes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = xcschemes;
+			path = iosSpeedometer.xcodeproj/project.xcworkspace/xcuserdata/etienne.xcuserdatad/xcschemes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

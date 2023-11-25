@@ -8,21 +8,21 @@ import kotlinx.coroutines.flow.mapNotNull
 import kotlinx.coroutines.flow.shareIn
 import kotlin.coroutines.EmptyCoroutineContext
 
-data class LocationDifference<R>(
-    val dx: R,
-    val dt: R
+data class LocationDifference(
+    val dx: Float,
+    val dt: Float
 )
 
-interface SpeedCalculation_I<L,R> {
-    fun diff(locations: Pair<L,L>): LocationDifference<R>
-    fun divide(differences: LocationDifference<R>): R?
+interface SpeedCalculation_I<L> {
+    fun diff(locations: Pair<L,L>): LocationDifference
+    fun divide(differences: LocationDifference): Float?
 }
 
-interface SpeedEvaluationStream_I<L,R> : SharedStream_I<R> {
+interface SpeedEvaluationStream_I<L> : SharedStream_I {
     val locationUpdateStream: LocationUpdateStream_I<L>
 }
 
-abstract class SpeedEvaluationStream_A<L,R> : SpeedEvaluationStream_I<L,R>, SpeedCalculation_I<L,R> {
+abstract class SpeedEvaluationStream_A<L> : SpeedEvaluationStream_I<L>, SpeedCalculation_I<L> {
     private val sharingScope = CoroutineScope(EmptyCoroutineContext)
 
     override val flow
