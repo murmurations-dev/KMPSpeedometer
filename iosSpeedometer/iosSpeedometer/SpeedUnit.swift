@@ -36,6 +36,6 @@ extension SpeedUnit {
     var userDisplay: String { kotlinObject.userDisplay }
 }
 
-extension SpeedUnitMetricSystem : Speedometer.SpeedUnit {}
-extension SpeedUnitKmh : Speedometer.SpeedUnit {}
-extension SpeedUnitMph : Speedometer.SpeedUnit {}
+//extension SpeedUnitMetricSystem : Speedometer.SpeedUnit {}
+//extension SpeedUnitKmh : Speedometer.SpeedUnit {}
+//extension SpeedUnitMph : Speedometer.SpeedUnit {}

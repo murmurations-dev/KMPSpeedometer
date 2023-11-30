@@ -1,6 +1,5 @@
 package dev.murmurations.kmpspeedometer
 
-import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.map
@@ -14,21 +13,28 @@ data class LocationDifference(
 )
 
 interface SpeedCalculation_I<L> {
-    fun diff(locations: Pair<L,L>): LocationDifference
-    fun divide(differences: LocationDifference): Float?
+    fun difference(locations: Pair<L,L>): LocationDifference
 }
 
-interface SpeedEvaluationStream_I<L> : SharedStream_I {
+interface SpeedEvaluationStream_I<L> : SharedStream_I<Float> {
     val locationUpdateStream: LocationUpdateStream_I<L>
 }
 
 abstract class SpeedEvaluationStream_A<L> : SpeedEvaluationStream_I<L>, SpeedCalculation_I<L> {
     private val sharingScope = CoroutineScope(EmptyCoroutineContext)
 
+    private fun speed(difference: LocationDifference): Float? {
+        val (dx, dt) = difference
+        return when {
+            (dt > 0.0) -> dx/dt
+            else -> null
+        }
+    }
+
     override val flow
         get() = locationUpdateStream.flow
             .runningPair()
-            .map(::diff)
-            .mapNotNull(::divide)
+            .map(::difference)
+            .mapNotNull(::speed)
             .shareIn(sharingScope, SharingStarted.WhileSubscribed())
 }

@@ -8,12 +8,12 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
 
-abstract class SpeedDisplayStream_A<L,R,T:SpeedUnit_I<R>>(
-    val runningStream: RunningStream_I,
-    val speedEvaluationStream: SpeedEvaluationStream_I<L,R>,
-    val speedUnitStream: MutableStateStream_I<T>
+abstract class SpeedDisplayStream_A<L>(
+    val runningStream: RunningStream,
+    val speedEvaluationStream: SpeedEvaluationStream_I<L>,
+    val speedUnitStream: MutableStateStream_I<SpeedUnit>
 ) {
-    abstract fun format(number: R): String
+    abstract fun format(number: Float): String
 
     @OptIn(kotlin.experimental.ExperimentalObjCName::class)
     @NativeCoroutines
@@ -22,7 +22,7 @@ abstract class SpeedDisplayStream_A<L,R,T:SpeedUnit_I<R>>(
 
     @OptIn(ExperimentalCoroutinesApi::class, kotlin.experimental.ExperimentalObjCName::class)
     @NativeCoroutines
-    val speedDisplayflow: Flow<String>
+    val speedDisplayFlow: Flow<String>
         get() = runningStream.flow.flatMapLatest { runningState ->
             when (runningState) {
                 is RunningState.Stopped -> flowOf("--")
@@ -34,4 +34,7 @@ abstract class SpeedDisplayStream_A<L,R,T:SpeedUnit_I<R>>(
                 }
             }
         }
+
+    fun start() = runningStream.start()
+    fun stop() = runningStream.stop()
 }

@@ -9,5 +9,8 @@
 import Speedometer
 
 class SpeedUnitStream : Speedometer.SpeedUnitStream {
+    init(initialUnit: SpeedUnit) {
+        super.init(initialState: initialUnit.kotlinObject)
+    }
     func setUnit(unit: SpeedUnit) { super.setUnit(unit: unit.kotlinObject) }
 }

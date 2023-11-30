@@ -8,6 +8,7 @@ compose-material3 = "1.1.2"
 androidx-activityCompose = "1.8.1" # https://androidx.tech/artifacts/activity/activity-compose/
 androidx-lifecycle = "2.6.2" # https://androidx.tech/artifacts/lifecycle/lifecycle-viewmodel/
 kotlinxCoroutinesCore = "1.7.3"  # https://github.com/Kotlin/kotlinx.coroutines/releases
+coreKtx = "1.12.0" # https://androidx.tech/artifacts/core/core-ktx/
 ksp = "1.9.20-1.0.14" # https://github.com/google/ksp/releases
 playServicesLocation = "21.0.1" # https://developers.google.com/android/guides/releases search for play-services-location
 kermit = "2.0.2" # https://github.com/touchlab/Kermit/releases
@@ -24,6 +25,7 @@ compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview"
 compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "compose-material3" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
+androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
 play-services-location = { module = "com.google.android.gms:play-services-location", version.ref = "playServicesLocation" }
 kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
 kermit-simple = { module = "co.touchlab:kermit-simple", version.ref = "kermit" }

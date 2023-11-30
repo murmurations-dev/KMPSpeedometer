@@ -23,7 +23,7 @@ interface MutableStateStream_I<T> : StateStream<T> {
     fun setState(value: T)
 }
 
-abstract class MutableStateStream_A<T>(
+open class MutableStateStream<T>(
     val initialState: T
 ) : MutableStateStream_I<T> {
     override val flow = MutableStateFlow<T>(initialState)

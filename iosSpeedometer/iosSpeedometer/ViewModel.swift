@@ -9,20 +9,47 @@
 import Foundation
 import SwiftUI
 
-//*** Progress
-import CoreLocation
-
 @Observable
 class ViewModel {
-    private let updateLocationStream: LocationUpdateStream
-    var updateLocation: CLLocation
+    private let speedDisplayStream: SpeedDisplayStream
+    var unitDisplay: String
+    var speedDisplay: String
         
-    init(initialState: RunningState) {
-        updateLocationStream = LocationUpdateStream.shared
-        updateLocation = CLLocation()
-        updateLocationStream.assign(to: self, on: \.updateLocation)
+    let start: ()->()
+    let stop: ()->()
+    
+    init(
+        initialRunningState: RunningState = .stopped,
+        initialUnit: SpeedUnit = .kmh
+    ) {
+        speedDisplayStream = SpeedDisplayStream(
+            initialRunningState: initialRunningState,
+            initialUnit: initialUnit,
+            displayFormat: "%.0f"
+        )
+        
+        start = speedDisplayStream.start
+        stop = speedDisplayStream.stop
+
+        unitDisplay = initialUnit.userDisplay
+        speedDisplay = ""
+        
+        speedDisplayStream.assignUnitDisplay(to: self, on: \.unitDisplay)
+        speedDisplayStream.assignSpeedDisplay(to: self, on: \.speedDisplay)
     }
 }
+
+//@Observable
+//class ViewModel {
+//    private let updateLocationStream: LocationUpdateStream
+//    var updateLocation: CLLocation
+//        
+//    init(initialState: RunningState) {
+//        updateLocationStream = LocationUpdateStream.shared
+//        updateLocation = CLLocation()
+//        updateLocationStream.assign(to: self, on: \.updateLocation)
+//    }
+//}
 
 //@Observable
 //class ViewModel {

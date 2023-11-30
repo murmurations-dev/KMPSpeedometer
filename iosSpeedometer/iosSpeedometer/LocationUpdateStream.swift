@@ -13,12 +13,11 @@ import Speedometer
 import KMPNativeCoroutinesAsync
 
 
-class LocationUpdateStream : LocationUpdateStream_T {
+class LocationUpdateStream : Speedometer.LocationUpdateStream {
     static let shared = LocationUpdateStream()
     
     override func startLocationUpdates(updateLocation: @escaping (CLLocation) -> Void) -> () -> Void {
         logger.info("Start Location Updates")
-        LoggerKt.i(string: "Hello from Swift")
 
         let manager = CLLocationManager()
 

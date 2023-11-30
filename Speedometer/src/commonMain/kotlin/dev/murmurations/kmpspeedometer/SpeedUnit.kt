@@ -4,10 +4,19 @@ interface ValueTransformer {
     fun transform(value: Float): Float
 }
 
-interface SpeedUnit_I : ValueTransformer {
+sealed interface SpeedUnit : ValueTransformer {
     val userDisplay: String
 
-    abstract class MetricSystem_A : SpeedUnit_I { override val userDisplay = "m/s" }
-    abstract class Kmh_A : SpeedUnit_I { override val userDisplay = "km/h" }
-    abstract class Mph_A : SpeedUnit_I { override val userDisplay = "mph" }
+    class MetricSystem : SpeedUnit {
+        override val userDisplay = "m/s"
+        override fun transform(value: Float): Float { return value }
+    }
+    class Kmh : SpeedUnit {
+        override val userDisplay = "km/h"
+        override fun transform(value: Float): Float { return value*3.6f }
+    }
+    class Mph : SpeedUnit {
+        override val userDisplay = "mph"
+        override fun transform(value: Float): Float { return value*2.2369362921f }
+    }
 }

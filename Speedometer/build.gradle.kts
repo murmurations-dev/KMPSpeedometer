@@ -5,7 +5,7 @@ plugins {
     alias(libs.plugins.kmp.nativecoroutines)
 }
 
-@OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
+//@OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
 kotlin {
     targetHierarchy.default()
 
@@ -55,4 +55,7 @@ android {
     defaultConfig {
         minSdk = 24
     }
+}
+dependencies {
+    implementation(libs.androidx.core.ktx)
 }

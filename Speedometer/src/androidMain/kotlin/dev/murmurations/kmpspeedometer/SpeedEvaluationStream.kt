@@ -6,7 +6,7 @@ class SpeedEvaluationStream(
     override val locationUpdateStream: LocationUpdateStream_I<Location>
 ) : SpeedEvaluationStream_A<Location>() {
 
-    override fun diff(locations: Pair<Location,Location>): LocationDifference {
+    override fun difference(locations: Pair<Location,Location>): LocationDifference {
         String.format("%.2f", 1.0F)
 
         val (l0, l1) = locations
@@ -16,13 +16,5 @@ class SpeedEvaluationStream(
             dx = l1.distanceTo(l0),
             dt = (t1 - t0).toFloat()/1e3f
         )
-    }
-
-    override fun divide(differences: LocationDifference): Float? {
-        val (dx, dt) = differences
-        return when {
-            (dt > 0.0) -> dx/dt
-            else -> null
-        }
     }
 }

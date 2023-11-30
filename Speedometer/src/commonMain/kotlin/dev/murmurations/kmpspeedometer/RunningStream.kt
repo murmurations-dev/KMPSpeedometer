@@ -1,13 +1,19 @@
 package dev.murmurations.kmpspeedometer
 
-interface RunningStream_I : MutableStateStream_I<RunningState> {
-    fun start()
-    fun stop()
-}
+import com.rickclephas.kmp.nativecoroutines.NativeCoroutines
 
-abstract class RunningStream_A(
+//interface RunningStream_I : MutableStateStream_I<RunningState> {
+//    fun start()
+//    fun stop()
+//}
+
+open class RunningStream(
     initialState: RunningState
-) : MutableStateStream_A<RunningState>(initialState), RunningStream_I  {
-    override fun start() = setState(RunningState.Started)
-    override fun stop() = setState(RunningState.Stopped)
+) : MutableStateStream<RunningState>(initialState)  {
+    fun start() = setState(RunningState.Started)
+    fun stop() = setState(RunningState.Stopped)
+
+    @OptIn(kotlin.experimental.ExperimentalObjCName::class)
+    @NativeCoroutines
+    val runningFlow = super.flow
 }

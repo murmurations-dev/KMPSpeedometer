@@ -1,7 +1,7 @@
 package dev.murmurations.kmpspeedometer
 
-class SpeedUnitStream (
+open class SpeedUnitStream(
     initialState: SpeedUnit
-) : MutableStateStream_A<SpeedUnit>(initialState)  {
+) : MutableStateStream<SpeedUnit>(initialState)  {
     fun setUnit(unit: SpeedUnit) = setState(unit)
 }
