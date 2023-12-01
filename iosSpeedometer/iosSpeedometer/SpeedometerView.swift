@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct SpeedometerView: View {
-    var model = ViewModel(initialState: .stopped)
+    var model = ViewModel(initialRunningState: .stopped, initialUnit: .kmh)
     
     var body: some View {
         VStack {

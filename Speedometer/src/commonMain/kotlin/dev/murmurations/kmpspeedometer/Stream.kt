@@ -20,12 +20,12 @@ interface StateStream<T> : SharedStream_I<T> {
 
 interface MutableStateStream_I<T> : StateStream<T> {
     override val flow: MutableStateFlow<T>
-    fun setState(value: T)
+    val setState: (T) -> Unit
 }
 
 open class MutableStateStream<T>(
     val initialState: T
 ) : MutableStateStream_I<T> {
     override val flow = MutableStateFlow<T>(initialState)
-    override fun setState(value: T) { flow.value = value }
+    override val setState: (T) -> Unit = { flow.value = it }
 }

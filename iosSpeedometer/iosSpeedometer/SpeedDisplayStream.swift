@@ -10,6 +10,7 @@ import KMPNativeCoroutinesAsync
 import Speedometer
 
 class SpeedDisplayStream : Speedometer.SpeedDisplayStream {
+
     init(
         initialRunningState: RunningState = .stopped,
         initialUnit: SpeedUnit = .kmh,
@@ -22,6 +23,8 @@ class SpeedDisplayStream : Speedometer.SpeedDisplayStream {
             displayFormat: displayFormat
         )
     }
+    
+    func setUnit(unit: SpeedUnit) { speedUnitStream.setState(unit.kotlinObject) }
     
     func assignUnitDisplay<Root>(
         to receiver: Root,
@@ -43,5 +46,20 @@ class SpeedDisplayStream : Speedometer.SpeedDisplayStream {
                 receiver[keyPath: keyPath] = speedDisplay
             }
         }
+    }
+    
+    func assignRunningState<Root>(
+        to receiver: Root,
+        on keyPath: ReferenceWritableKeyPath<Root, RunningState>
+    ) {
+        Task { @MainActor in
+            for try await runningState in runningStateSequence {
+                receiver[keyPath: keyPath] = runningState
+            }
+        }
+    }
+    
+    var runningStateSequence: AsyncCompactMapSequence<some AsyncSequence, RunningState> {
+        asyncSequence(for: runningStateFlow).compactMap(RunningState.init)
     }
 }

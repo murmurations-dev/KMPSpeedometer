@@ -10,8 +10,8 @@ import com.rickclephas.kmp.nativecoroutines.NativeCoroutines
 open class RunningStream(
     initialState: RunningState
 ) : MutableStateStream<RunningState>(initialState)  {
-    fun start() = setState(RunningState.Started)
-    fun stop() = setState(RunningState.Stopped)
+    val start = { setState(RunningState.Started) }
+    val stop = { setState(RunningState.Stopped) }
 
     @OptIn(kotlin.experimental.ExperimentalObjCName::class)
     @NativeCoroutines

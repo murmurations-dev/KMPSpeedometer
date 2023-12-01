@@ -14,9 +14,11 @@ class ViewModel {
     private let speedDisplayStream: SpeedDisplayStream
     var unitDisplay: String
     var speedDisplay: String
+    var runningState: RunningState
         
-    let start: ()->()
-    let stop: ()->()
+    let start: () -> ()
+    let stop: () -> ()
+    let setUnit: (SpeedUnit) -> ()
     
     init(
         initialRunningState: RunningState = .stopped,
@@ -30,12 +32,15 @@ class ViewModel {
         
         start = speedDisplayStream.start
         stop = speedDisplayStream.stop
+        setUnit = speedDisplayStream.setUnit
 
         unitDisplay = initialUnit.userDisplay
         speedDisplay = ""
+        runningState = initialRunningState
         
         speedDisplayStream.assignUnitDisplay(to: self, on: \.unitDisplay)
         speedDisplayStream.assignSpeedDisplay(to: self, on: \.speedDisplay)
+        speedDisplayStream.assignRunningState(to: self, on: \.runningState)
     }
 }
 

@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.map
 abstract class SpeedDisplayStream_A<L>(
     val runningStream: RunningStream,
     val speedEvaluationStream: SpeedEvaluationStream_I<L>,
-    val speedUnitStream: MutableStateStream_I<SpeedUnit>
+    val speedUnitStream: SpeedUnitStream
 ) {
     abstract fun format(number: Float): String
 
@@ -35,6 +35,10 @@ abstract class SpeedDisplayStream_A<L>(
             }
         }
 
-    fun start() = runningStream.start()
-    fun stop() = runningStream.stop()
+    @OptIn(kotlin.experimental.ExperimentalObjCName::class)
+    @NativeCoroutines
+    val runningStateFlow = runningStream.flow
+
+    val start = runningStream.start
+    val stop = runningStream.stop
 }
