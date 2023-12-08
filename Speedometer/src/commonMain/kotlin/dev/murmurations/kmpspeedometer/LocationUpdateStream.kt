@@ -3,6 +3,7 @@ package dev.murmurations.kmpspeedometer
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.shareIn
@@ -20,4 +21,17 @@ abstract class LocationUpdateStream_A<L> : LocationUpdateStream_I<L> {
         val stopLocationUpdates = startLocationUpdates({ launch { send(it) } })
         awaitClose(stopLocationUpdates)
     }.shareIn(sharingScope, SharingStarted.WhileSubscribed())
+}
+
+interface LocationUpdateSeed<L> {
+    fun startLocationUpdates(updateLocation: (L) -> (Unit)): () -> (Unit)
+
+    private val sharingScope: CoroutineScope
+        get() = CoroutineScope(EmptyCoroutineContext)
+
+    val flow: SharedFlow<L>
+        get() = callbackFlow {
+            val stopLocationUpdates = startLocationUpdates({ launch { send(it) } })
+            awaitClose(stopLocationUpdates)
+        }.shareIn(sharingScope, SharingStarted.WhileSubscribed())
 }

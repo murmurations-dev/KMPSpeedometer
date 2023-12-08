@@ -21,7 +21,7 @@ import dev.murmurations.kmpspeedometer.RunningState
 fun SpeedometerView(
     model: SpeedometerViewModel = SpeedometerViewModel()
 ) {
-    val runningState by model.runningStream.flow.collectAsState()
+    val runningState by model.sharedMutableStateFlow.collectAsState()
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -37,14 +37,14 @@ fun SpeedometerView(
         Spacer(modifier = Modifier.height(16.dp))
 
         Button(
-            onClick = {}, // model::start,
+            onClick = model.start,
             enabled = runningState !is RunningState.Started
         ) {
             Text("Start")
         }
 
         Button(
-            onClick = {}, // model::stop,
+            onClick = model.stop,
             enabled = runningState !is RunningState.Stopped
         ) {
             Text("Stop")
