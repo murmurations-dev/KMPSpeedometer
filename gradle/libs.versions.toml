@@ -1,18 +1,18 @@
 [versions]
-agp = "8.1.4" # https://developer.android.com/reference/tools/gradle-api
-kotlin = "1.9.20"  # https://kotlinlang.org/docs/releases.html#release-details
+agp = "8.2.0" # https://developer.android.com/reference/tools/gradle-api
+kotlin = "1.9.21"  # https://kotlinlang.org/docs/releases.html#release-details
 compose = "1.5.4"
 # compose-bom = "2023.10.01" # https://androidx.tech/artifacts/compose/compose-bom/
-compose-compiler = "1.5.4"  # https://androidx.dev/storage/compose-compiler/repository
+compose-compiler = "1.5.6" # https://androidx.dev/storage/compose-compiler/repository
 compose-material3 = "1.1.2"
 androidx-activityCompose = "1.8.1" # https://androidx.tech/artifacts/activity/activity-compose/
 androidx-lifecycle = "2.6.2" # https://androidx.tech/artifacts/lifecycle/lifecycle-viewmodel/
 kotlinxCoroutinesCore = "1.7.3"  # https://github.com/Kotlin/kotlinx.coroutines/releases
 coreKtx = "1.12.0" # https://androidx.tech/artifacts/core/core-ktx/
-ksp = "1.9.20-1.0.14" # https://github.com/google/ksp/releases
+ksp = "1.9.21-1.0.15" # https://github.com/google/ksp/releases
 playServicesLocation = "21.0.1" # https://developers.google.com/android/guides/releases search for play-services-location
 kermit = "2.0.2" # https://github.com/touchlab/Kermit/releases
-kmp-nativecoroutines = "1.0.0-ALPHA-20" # https://github.com/rickclephas/KMP-NativeCoroutines/releases
+kmp-nativecoroutines = "1.0.0-ALPHA-22" # https://github.com/rickclephas/KMP-NativeCoroutines/releases
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }

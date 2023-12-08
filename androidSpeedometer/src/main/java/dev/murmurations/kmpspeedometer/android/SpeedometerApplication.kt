@@ -7,21 +7,20 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.os.Bundle
-import co.touchlab.kermit.Logger
 
 object ActivityLifecycleListener : Application.ActivityLifecycleCallbacks {
     override fun onActivityDestroyed(activity: Activity) {
-        Logger.i("onActivityDestroyed at ${activity.localClassName}")
+        //Logger.i("onActivityDestroyed at ${activity.localClassName}")
         clearReferences(activity)
     }
 
     override fun onActivityResumed(activity: Activity) {
-        Logger.i("onActivityResumed at ${activity.localClassName}")
+        //Logger.i("onActivityResumed at ${activity.localClassName}")
         SpeedometerApplication.currentActivity = activity
     }
 
     override fun onActivityPaused(activity: Activity) {
-        Logger.i("onActivityPaused at ${activity.localClassName}")
+        //Logger.i("onActivityPaused at ${activity.localClassName}")
         clearReferences(activity)
     }
 

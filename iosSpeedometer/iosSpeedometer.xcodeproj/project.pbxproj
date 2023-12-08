@@ -22,6 +22,7 @@
 		8F7912102AE11D32001D3D4C /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F79120E2AE11D32001D3D4C /* ViewModel.swift */; };
 		8F7912112AE11D32001D3D4C /* RunningStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F79120F2AE11D32001D3D4C /* RunningStream.swift */; };
 		8FFE7C9F2B18D722003A6D62 /* SpeedDisplayStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FFE7C9E2B18D722003A6D62 /* SpeedDisplayStream.swift */; };
+		8FFE7CA12B1FA7DD003A6D62 /* SpeedEvaluationStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FFE7CA02B1FA7DD003A6D62 /* SpeedEvaluationStream.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,6 +52,7 @@
 		8F79120E2AE11D32001D3D4C /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		8F79120F2AE11D32001D3D4C /* RunningStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunningStream.swift; sourceTree = "<group>"; };
 		8FFE7C9E2B18D722003A6D62 /* SpeedDisplayStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedDisplayStream.swift; sourceTree = "<group>"; };
+		8FFE7CA02B1FA7DD003A6D62 /* SpeedEvaluationStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedEvaluationStream.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				8F598B3D2AF11C8900065F11 /* SpeedUnitStream.swift */,
 				8F598B3F2AF1732C00065F11 /* LocationUpdateStream.swift */,
 				8FFE7C9E2B18D722003A6D62 /* SpeedDisplayStream.swift */,
+				8FFE7CA02B1FA7DD003A6D62 /* SpeedEvaluationStream.swift */,
 				058557D7273AAEEB004C7B11 /* Preview Content */,
 			);
 			path = iosSpeedometer;
@@ -232,6 +235,7 @@
 				8F7912102AE11D32001D3D4C /* ViewModel.swift in Sources */,
 				8F79120B2AE11D06001D3D4C /* RunningState.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
+				8FFE7CA12B1FA7DD003A6D62 /* SpeedEvaluationStream.swift in Sources */,
 				8F598B3E2AF11C8900065F11 /* SpeedUnitStream.swift in Sources */,
 				8F7912112AE11D32001D3D4C /* RunningStream.swift in Sources */,
 				8F598B402AF1732C00065F11 /* LocationUpdateStream.swift in Sources */,

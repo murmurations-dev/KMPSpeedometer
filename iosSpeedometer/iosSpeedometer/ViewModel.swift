@@ -8,12 +8,13 @@
 
 import Foundation
 import SwiftUI
+import Speedometer
 
-@Observable
-class ViewModel {
+@Observable class ViewModel {
     private let speedDisplayStream: SpeedDisplayStream
+    
     var unitDisplay: String
-    var speedDisplay: String
+    var speedDisplay = "--" // No speed display
     var runningState: RunningState
         
     let start: () -> ()
@@ -35,7 +36,6 @@ class ViewModel {
         setUnit = speedDisplayStream.setUnit
 
         unitDisplay = initialUnit.userDisplay
-        speedDisplay = ""
         runningState = initialRunningState
         
         speedDisplayStream.assignUnitDisplay(to: self, on: \.unitDisplay)

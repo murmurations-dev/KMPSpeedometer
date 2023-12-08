@@ -10,7 +10,7 @@ struct SpeedometerView: View {
 //            case .started: "Started"
 //            }
 //            Text(text)
-            Text(model.updateLocation.description)
+//            Text(model.updateLocation.description)
             
 //            Spacer().frame(height: 16)
 //            

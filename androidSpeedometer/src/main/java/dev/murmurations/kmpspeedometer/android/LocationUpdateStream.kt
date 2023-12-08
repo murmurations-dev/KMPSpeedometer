@@ -9,7 +9,6 @@ import android.location.LocationManager
 import android.os.Build
 import android.os.Looper
 import androidx.core.app.ActivityCompat
-import co.touchlab.kermit.Logger
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
@@ -44,7 +43,7 @@ class LocationUpdateStream(
             override fun onLocationResult(result: LocationResult) {
                 super.onLocationResult(result)
                 result.locations.lastOrNull()?.let { location ->
-                    Logger.i { "Location: $location" }
+                    // Logger.i { "Location: $location" }
                     updateLocation(location)
                 }
             }
@@ -52,7 +51,7 @@ class LocationUpdateStream(
 
         val client = LocationServices.getFusedLocationProviderClient(context)
 
-        Logger.i { "Start location updates" }
+        // Logger.i { "Start location updates" }
         context.startForegroundService()
         client.requestLocationUpdates(
             request,
@@ -61,7 +60,7 @@ class LocationUpdateStream(
         )
 
         return {
-            Logger.i { "Stop location updates" }
+            // Logger.i { "Stop location updates" }
             client.removeLocationUpdates(locationCallback)
             context.stopForegroundService()
         }

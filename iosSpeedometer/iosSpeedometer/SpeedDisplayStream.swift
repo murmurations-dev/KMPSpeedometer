@@ -9,16 +9,80 @@
 import KMPNativeCoroutinesAsync
 import Speedometer
 
-class SpeedDisplayStream : Speedometer.SpeedDisplayStream {
+//class SpeedDisplayStream : Speedometer.SpeedDisplayStream {
+//
+//    init(
+//        initialRunningState: RunningState = .stopped,
+//        initialUnit: SpeedUnit = .kmh,
+//        displayFormat: String = "%.0f"
+//    ) {
+//        super.init(
+//            runningStream: RunningStream(initialState: initialRunningState),
+//            speedEvaluationStream: SpeedEvaluationStream(locationUpdateStream: LocationUpdateStream.shared),
+//            speedUnitStream: SpeedUnitStream(initialUnit: initialUnit),
+//            displayFormat: displayFormat
+//        )
+//    }
+//    
+//    func setUnit(unit: SpeedUnit) { speedUnitStream.setState(unit.kotlinObject) }
+//    
+//    func assignUnitDisplay<Root>(
+//        to receiver: Root,
+//        on keyPath: ReferenceWritableKeyPath<Root, String>
+//    ) {
+//        Task { @MainActor in
+//            for try await unitDisplay in asyncSequence(for: unitDisplayFlow) {
+//                receiver[keyPath: keyPath] = unitDisplay
+//            }
+//        }
+//    }
+//    
+//    func assignSpeedDisplay<Root>(
+//        to receiver: Root,
+//        on keyPath: ReferenceWritableKeyPath<Root, String>
+//    ) {
+//        Task { @MainActor in
+//            for try await speedDisplay in asyncSequence(for: speedDisplayFlow) {
+//                receiver[keyPath: keyPath] = speedDisplay
+//            }
+//        }
+//    }
+//    
+//    func assignRunningState<Root>(
+//        to receiver: Root,
+//        on keyPath: ReferenceWritableKeyPath<Root, RunningState>
+//    ) {
+//        runningStream.assign(to: receiver, on: keyPath)
+//    }
+//    
+//
+//    
+////    func assignRunningState<Root>(
+////        to receiver: Root,
+////        on keyPath: ReferenceWritableKeyPath<Root, RunningState>
+////    ) {
+////        Task { @MainActor in
+////            for try await runningState in runningStateSequence {
+////                receiver[keyPath: keyPath] = runningState
+////            }
+////        }
+////    }
+////    
+////    var runningStateSequence: AsyncCompactMapSequence<some AsyncSequence, RunningState> {
+////        asyncSequence(for: runningStateFlow).compactMap(RunningState.init)
+////    }
+//}
 
-    init(
+
+extension SpeedDisplayStream {
+    convenience init(
         initialRunningState: RunningState = .stopped,
         initialUnit: SpeedUnit = .kmh,
         displayFormat: String = "%.0f"
     ) {
-        super.init(
+        self.init(
             runningStream: RunningStream(initialState: initialRunningState),
-            speedEvaluationStream: SpeedEvaluationStream(locationUpdateStream: LocationUpdateStream.shared),
+            speedEvaluationStream: SpeedEvaluationStream.shared,
             speedUnitStream: SpeedUnitStream(initialUnit: initialUnit),
             displayFormat: displayFormat
         )
@@ -52,14 +116,7 @@ class SpeedDisplayStream : Speedometer.SpeedDisplayStream {
         to receiver: Root,
         on keyPath: ReferenceWritableKeyPath<Root, RunningState>
     ) {
-        Task { @MainActor in
-            for try await runningState in runningStateSequence {
-                receiver[keyPath: keyPath] = runningState
-            }
-        }
+        runningStream.assign(to: receiver, on: keyPath)
     }
-    
-    var runningStateSequence: AsyncCompactMapSequence<some AsyncSequence, RunningState> {
-        asyncSequence(for: runningStateFlow).compactMap(RunningState.init)
-    }
+
 }
