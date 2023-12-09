@@ -13,8 +13,18 @@ abstract class LocationUpdateStream : LocationUpdateStream_A<CLLocation>() {
     val locationUpdateFlow = super.flow
 }
 
-interface LocationUpdateCLLocation : LocationUpdateSeed<CLLocation> {
-    override fun startLocationUpdates(updateLocation: (CLLocation) -> (Unit)): () -> (Unit)
+interface LocationUpdateCLLocation2 /* : LocationUpdateSeed<CLLocation> */ {
+    val startLocationUpdates3: ((CLLocation) -> Unit) -> () -> Unit
+//    override fun startLocationUpdates2(updateLocation: (CLLocation) -> (Unit)): () -> (Unit)
+}
+
+abstract class LocationUpdateCLLocation : LocationUpdateSeed<CLLocation> {
+    abstract val startLocationUpdates3: ((CLLocation) -> Unit) -> () -> Unit
+    abstract override fun startLocationUpdates2(updateLocation: (CLLocation) -> (Unit)): () -> (Unit)
+
+    // public final val a: KFunction1<(CLLocation) -> Unit, () -> Unit>
+    val a = ::startLocationUpdates2
+    abstract val b: ((CLLocation) -> Unit) -> () -> Unit
 
     @OptIn(kotlin.experimental.ExperimentalObjCName::class)
     @NativeCoroutines

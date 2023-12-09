@@ -57,3 +57,16 @@ class LocationUpdateStream : Speedometer.LocationUpdateStream {
 //        asyncSequence(for: locationUpdateFlow).compactMap(RunningState.init)
 //    }
 }
+
+
+
+/*
+ Instance method cannot be an implementation of an @objc requirement because it has generic parameters.
+ Non-'@objc' method 'startLocationUpdates2(updateLocation:)' does not satisfy requirement of '@objc' protocol 'LocationUpdateSeed'
+ 
+ let a: (Plant) -> (@escaping (CLLocation) -> Void) -> () -> Void
+ */
+class Plant : LocationUpdateCLLocation2 {
+    var startLocationUpdates3: (@escaping (CLLocation) -> KotlinUnit) -> () -> KotlinUnit = { _ in return { KotlinUnit() } }
+    
+}

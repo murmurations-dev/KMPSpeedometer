@@ -24,14 +24,14 @@ abstract class LocationUpdateStream_A<L> : LocationUpdateStream_I<L> {
 }
 
 interface LocationUpdateSeed<L> {
-    fun startLocationUpdates(updateLocation: (L) -> (Unit)): () -> (Unit)
+    fun startLocationUpdates2(updateLocation: (L) -> (Unit)): () -> (Unit)
 
     private val sharingScope: CoroutineScope
         get() = CoroutineScope(EmptyCoroutineContext)
 
     val flow: SharedFlow<L>
         get() = callbackFlow {
-            val stopLocationUpdates = startLocationUpdates({ launch { send(it) } })
+            val stopLocationUpdates = startLocationUpdates2({ launch { send(it) } })
             awaitClose(stopLocationUpdates)
         }.shareIn(sharingScope, SharingStarted.WhileSubscribed())
 }

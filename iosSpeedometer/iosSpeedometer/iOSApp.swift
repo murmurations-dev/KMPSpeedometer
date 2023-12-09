@@ -12,6 +12,5 @@ struct iOSApp: App {
 		WindowGroup {
 			SpeedometerView()
 		}
-        .environment(speedEvaluation)
 	}
 }
