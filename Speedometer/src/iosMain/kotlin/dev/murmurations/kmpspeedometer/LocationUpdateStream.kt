@@ -2,7 +2,14 @@ package dev.murmurations.kmpspeedometer
 
 import kotlinx.coroutines.flow.SharedFlow
 import com.rickclephas.kmp.nativecoroutines.NativeCoroutines
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.shareIn
+import kotlinx.coroutines.launch
 import platform.CoreLocation.CLLocation
+import kotlin.coroutines.EmptyCoroutineContext
 
 abstract class LocationUpdateStream : LocationUpdateStream_A<CLLocation>() {
     abstract override fun startLocationUpdates(updateLocation: (CLLocation) -> (Unit)): () -> (Unit)
@@ -13,10 +20,27 @@ abstract class LocationUpdateStream : LocationUpdateStream_A<CLLocation>() {
     val locationUpdateFlow = super.flow
 }
 
-interface LocationUpdateCLLocation2 /* : LocationUpdateSeed<CLLocation> */ {
-    val startLocationUpdates3: ((CLLocation) -> Unit) -> () -> Unit
-//    override fun startLocationUpdates2(updateLocation: (CLLocation) -> (Unit)): () -> (Unit)
+fun sharingScope() = CoroutineScope(EmptyCoroutineContext)
+
+interface LocationUpdateBase<L> {
+//    val startLocationUpdates3: ((L) -> Unit) -> () -> Unit
+//
+//    val locationUpdatesSharing: SharedStream_I<L>
+//        get() =  object : SharedStream_I<L> {
+//            private val sharingScope = CoroutineScope(EmptyCoroutineContext)
+//
+//            override val flow = callbackFlow {
+//                val stopLocationUpdates = startLocationUpdates3({ launch { send(it) } })
+//                awaitClose(stopLocationUpdates)
+//            }.shareIn(sharingScope, SharingStarted.WhileSubscribed())
+//        }
 }
+
+interface LocationUpdateCLLocation2 : LocationUpdateBase<CLLocation> {
+    val startLocationUpdates3: ((CLLocation) -> Unit) -> () -> Unit
+    //val locationUpdatesSharing: SharedStream_I<CLLocation>
+}
+
 
 abstract class LocationUpdateCLLocation : LocationUpdateSeed<CLLocation> {
     abstract val startLocationUpdates3: ((CLLocation) -> Unit) -> () -> Unit

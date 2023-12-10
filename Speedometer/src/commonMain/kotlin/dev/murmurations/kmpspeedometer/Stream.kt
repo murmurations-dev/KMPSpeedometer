@@ -51,3 +51,16 @@ interface RunningStateSeed : MutableStateSeed<RunningState> {
     val runningFlow: MutableStateFlow<RunningState>
         get() = sharedMutableStateFlow
 }
+
+interface RunningStateSeed2 : MutableStateSeed<RunningSeed> {
+    override val sharedMutableStateFlow: MutableStateFlow<RunningSeed>
+    val start: () -> Unit
+        get() = { setState(object : RunningSeed.Started{}) }
+    val stop: () -> Unit
+        get() = { setState(object : RunningSeed.Stopped{}) }
+
+    @OptIn(kotlin.experimental.ExperimentalObjCName::class)
+    @NativeCoroutines
+    val runningFlow: MutableStateFlow<RunningSeed>
+        get() = sharedMutableStateFlow
+}

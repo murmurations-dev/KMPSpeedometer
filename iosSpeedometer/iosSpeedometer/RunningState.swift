@@ -23,6 +23,14 @@ extension RunningState {
         }
     }
 
+    @Sendable init?(kotlinObject: Speedometer.RunningSeed) {
+        switch (kotlinObject) {
+        case is RunningSeedStopped: self = .stopped
+        case is RunningSeedStarted: self = .started
+        default: return nil
+        }
+    }
+
     var kotlinObject: Speedometer.RunningState {
         switch self {
         case .stopped: RunningStateStopped()
