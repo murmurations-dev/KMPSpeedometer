@@ -12,7 +12,16 @@ import Speedometer
 enum RunningState {
     case stopped
     case started
+    
+    enum Kotlin {
+        class Stopped : RunningSeedStopped {}
+        class Started : RunningSeedStarted {}
+    }
 }
+
+extension RunningState.Kotlin.Stopped : Speedometer.RunningSeed {}
+extension RunningState.Kotlin.Started : Speedometer.RunningSeed {}
+
 
 extension RunningState {
     @Sendable init?(kotlinObject: Speedometer.RunningState) {
@@ -35,6 +44,13 @@ extension RunningState {
         switch self {
         case .stopped: RunningStateStopped()
         case .started: RunningStateStarted()
+        }
+    }
+
+    var kotlin: Speedometer.RunningSeed {
+        switch self {
+        case .stopped: Kotlin.Stopped()
+        case .started: Kotlin.Started()
         }
     }
 }
